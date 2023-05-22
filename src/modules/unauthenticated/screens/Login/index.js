@@ -4,13 +4,15 @@ import { Text, Input, Link, Button } from "components"
 export const LoginScreen = () => {
   return (
     <Flex flexDir="row" w="100vw" h='100vh'>
-      <Flex paddingLeft="90px" 
-       alignItems="flex-start"
-       justifyContent="center"
+      <Flex 
+       padding={['24px', '24px', '48px', '0px']}
+       paddingLeft={['24px', '95px']} 
+       alignItems={['center', 'center', 'center', 'flex-start']}
+       justifyContent={['center', 'center', 'center', 'center']}
        flexDir="column" 
-       w="40%" 
-       h="100%">
-        <Flex w="390px" flexDir="column" >
+       w={['100%', '100%', '100%', '40%']}  
+       h={['100%', '100vh', '100vh', '100%']}>
+        <Flex w={['100%', '100%', '100%', '390px']} flexDir="column" >
           <Image src="img/logo.svg" alt="BookClub Logo" w="160px" h="48px" />
           <Text.ScreenTitle mt="48px">Login</Text.ScreenTitle>
           <Input mt="24px" placeholder="email@email.com" />
@@ -22,7 +24,7 @@ export const LoginScreen = () => {
           <Link.Action mt="48px" text="Não possui uma conta?" actionText="Cadastre-se aqui." />
         </Flex>
       </Flex>
-      <Flex w="60%" h="100%"
+      <Flex w={['0%', '0%', '0%', '60%']} h="100%"
       backgroundImage="url('img/auth_background.svg')"
       backgroundSize="cover"
       backgroundPosition="center"
