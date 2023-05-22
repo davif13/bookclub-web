@@ -1,9 +1,26 @@
 import { Flex, Image } from '@chakra-ui/react'
 import { Text, Input, Button } from 'components'
 import { useNavigate } from 'react-router-dom'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 export const ForgotPasswordScreen = () => {
   const navigate = useNavigate()
+
+  const { handleSubmit, values, handleChange, errors } = useFormik({
+    initialValues: {
+      email: ''
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email('E-mail inválido.')
+        .required('E-mail é obrigatório.')
+    }),
+    onSubmit: (data) => {
+      navigate('/reset-password')
+    }
+  })
+
   return (
     <Flex flexDir="row" w="100vw" h="100vh">
       <Flex
@@ -22,8 +39,17 @@ export const ForgotPasswordScreen = () => {
             Digite abaixo seu e-mail para receber um código de recuperação de
             senha:
           </Text>
-          <Input mt="24px" placeholder="email@email.com" />
-          <Button mt="24px" onClick={() => navigate('/reset-password')}>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            value={values.email}
+            error={errors.email}
+            mt="24px"
+            placeholder="email@email.com"
+            onChange={handleChange}
+          />
+          <Button mt="24px" onClick={handleSubmit}>
             Avançar
           </Button>
         </Flex>

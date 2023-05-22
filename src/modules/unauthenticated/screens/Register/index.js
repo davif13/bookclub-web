@@ -1,9 +1,62 @@
-import { Flex, Image } from '@chakra-ui/react'
+import { Flex, Image, useToast } from '@chakra-ui/react'
 import { Text, Input, Link, Button } from 'components'
 import { useNavigate } from 'react-router-dom'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import { useMutation } from 'react-query'
+import { registerCall } from 'services/api/requests'
 
 export const RegisterScreen = () => {
   const navigate = useNavigate()
+  const toast = useToast()
+  const mutation = useMutation((newUser) => registerCall(newUser), {
+    onError: (error) => {
+      toast({
+        title: 'Falha ao criar conta',
+        description:
+          error?.response?.data?.error || 'Por favor, tente novamente.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true
+      })
+    },
+    onSuccess: () => {
+      toast({
+        title: 'Conta criada com sucesso',
+        status: 'success',
+        duration: 6000,
+        isClosable: true
+      })
+      navigate('/')
+    }
+  })
+
+  const { handleSubmit, values, handleChange, errors } = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .min(3, 'Nome deve conter ao menos 3 caracteres')
+        .required('Nome é obrigatório'),
+      email: Yup.string()
+        .email('E-mail inválido.')
+        .required('E-mail é obrigatório.'),
+      password: Yup.string()
+        .min(6, 'Senha deve ter ao menos 6 caracteres.')
+        .required('Senha é obrigatório.'),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Senhas devem ser iguais')
+        .required('Confirmar a senha é obrigatório.')
+    }),
+    onSubmit: (data) => {
+      mutation.mutate(data)
+    }
+  })
+
   return (
     <Flex flexDir="row" w="100vw" h="100vh">
       <Flex
@@ -18,11 +71,51 @@ export const RegisterScreen = () => {
         <Flex w={['100%', '100%', '100%', '390px']} flexDir="column">
           <Image src="img/logo.svg" alt="BookClub Logo" w="160px" h="48px" />
           <Text.ScreenTitle mt="48px">Cadastro</Text.ScreenTitle>
-          <Input mt="24px" placeholder="Nome Completo" />
-          <Input mt="16px" placeholder="E-mail" />
-          <Input.Password mt="16px" placeholder="Senha" />
-          <Input.Password mt="16px" placeholder="Repita a senha" />
-          <Button mt="24px">Cadastrar</Button>
+          <Input
+            id="name"
+            name="name"
+            value={values.name}
+            error={errors.name}
+            type="text"
+            mt="24px"
+            placeholder="Nome Completo"
+            onChange={handleChange}
+          />
+          <Input
+            id="email"
+            name="email"
+            value={values.email}
+            error={errors.email}
+            type="email"
+            mt="16px"
+            placeholder="E-mail"
+            onChange={handleChange}
+          />
+          <Input.Password
+            id="password"
+            name="password"
+            value={values.password}
+            error={errors.password}
+            mt="16px"
+            placeholder="Senha"
+            onChange={handleChange}
+          />
+          <Input.Password
+            id="confirmPassword"
+            name="confirmPassword"
+            value={values.confirmPassword}
+            error={errors.confirmPassword}
+            mt="16px"
+            placeholder="Repita a senha"
+            onChange={handleChange}
+          />
+          <Button
+            isLoading={mutation.isLoading}
+            mt="24px"
+            onClick={handleSubmit}
+          >
+            Cadastrar
+          </Button>
           <Link.Action
             onClick={() => navigate('/')}
             mt={['8px', '12px']}

@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 
 export const LoginScreen = () => {
   const navigate = useNavigate()
+
   const { handleSubmit, values, handleChange, errors } = useFormik({
     initialValues: {
       email: '',
@@ -19,12 +20,9 @@ export const LoginScreen = () => {
         .min(6, 'Senha deve ter ao menos 6 caracteres.')
         .required('Senha é obrigatória.')
     }),
-    onSubmit: (data) => {
-      console.log({ data })
-    }
+    onSubmit: (data) => {}
   })
 
-  console.log({ values, errors })
   return (
     <Flex flexDir="row" w="100vw" h="100vh">
       <Flex
@@ -42,6 +40,7 @@ export const LoginScreen = () => {
           <Input
             id="email"
             name="email"
+            type="email"
             value={values.email}
             mt="24px"
             placeholder="email@email.com"
