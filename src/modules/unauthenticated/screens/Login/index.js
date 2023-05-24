@@ -39,7 +39,7 @@ export const LoginScreen = () => {
           token: data?.data?.token
         })
       )
-      navigate('/')
+      navigate('/home')
     }
   })
 

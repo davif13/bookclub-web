@@ -82,7 +82,6 @@ export const UserMenu = () => {
             divider={item.divider}
           />
         ))}
-        <MenuItem icon={BsBookmarkHeart} text="Favoritos" h="48px" />
       </MenuList>
     </Menu>
   )

@@ -1,5 +1,5 @@
 import { Flex, Image } from '@chakra-ui/react'
-import { SearchBar } from 'components/molecules'
+import { SearchBar, UserMenu } from 'components/molecules'
 
 export const NavBar = () => {
   return (
@@ -13,6 +13,7 @@ export const NavBar = () => {
     >
       <Image src="img/logo.svg" alt="BookClub Logo" w="160px" h="48px" />
       <SearchBar />
+      <UserMenu />
     </Flex>
   )
 }
