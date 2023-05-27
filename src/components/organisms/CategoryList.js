@@ -30,7 +30,16 @@ export const CategoryList = () => {
       h="400px"
     >
       <Text.ScreenTitle>Categorias</Text.ScreenTitle>
-      <Flex mt="12px" flexDir="row">
+      <Flex
+        overflowX={['scroll', 'auto']}
+        mt="12px"
+        flexDir="row"
+        css={{
+          '::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }}
+      >
         {data?.data &&
           data?.data.map((item) => (
             <CategoryCard
@@ -41,7 +50,17 @@ export const CategoryList = () => {
             />
           ))}
       </Flex>
-      <Flex mt="12px" flexDir="row" pb="48px">
+      <Flex
+        overflowX={['scroll', 'auto']}
+        mt="12px"
+        flexDir="row"
+        pb="48px"
+        css={{
+          '::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }}
+      >
         {bookQuery?.data &&
           bookQuery?.data?.data.map((item) => (
             <BookCard key={`book_${item.id}`} {...item} />
