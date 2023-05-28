@@ -80,23 +80,31 @@ export const BookDetailScreen = () => {
 
   return (
     <Flex flexDir="column">
-      <NavBar />
+      <NavBar maxW={['95vw', '100vw']} />
       <Flex
-        flexDir="row"
+        flexDir={['column', 'row']}
+        alignItems={['center', 'flex-start']}
+        justifyContent={['center', 'flex-start']}
         mt={['24px', '48px']}
         w="100%"
-        paddingX={['24px', '24px', '48px', '100px']}
+        maxW="100vw"
+        paddingX={['24px', '48px', '80px', '112px']}
       >
         <Flex
-          w={['280px']}
-          h={['310px']}
+          w={['170px', '280px']}
+          h={['256px', '310px']}
           backgroundImage={`url(${data?.data?.book?.cover_url})`}
           backgroundSize="cover"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
           borderRadius={['12px']}
         />
-        <Flex w="70%" mx="48px" flexDir="column">
+        <Flex
+          mt={['24px', '0px']}
+          w={['100%', '70%']}
+          mx={['0px', '48px']}
+          flexDir="column"
+        >
           <Text.ScreenTitle fontSize="24px">
             {data?.data?.book?.name}
           </Text.ScreenTitle>
@@ -104,7 +112,12 @@ export const BookDetailScreen = () => {
             {data?.data?.book?.author?.name}
           </Text>
           <Text.ScreenTitle mt="16px">Informações</Text.ScreenTitle>
-          <Flex mt="4px" w="100%" flexDir="row" justifyContent="space-between">
+          <Flex
+            mt="4px"
+            w="100%"
+            flexDir={['column', 'row']}
+            justifyContent={['flex-start', 'space-between']}
+          >
             <Text fontSize="14px" color="brand.greyDark">
               Categoria: {data?.data?.book?.category?.name}
             </Text>
@@ -117,11 +130,16 @@ export const BookDetailScreen = () => {
             </Text>
           </Flex>
           <Text.ScreenTitle mt="16px">Sinopse</Text.ScreenTitle>
-          <Text mt="4px" fontSize="12px" color="brand.greyDark">
+          <Text maxWidth="80%" mt="4px" fontSize="12px" color="brand.greyDark">
             {data?.data?.book?.synopsis}
           </Text>
         </Flex>
-        <Flex>
+        <Flex
+          justifyContent={['center', 'flex-start']}
+          alignItems={['center', 'flex-start']}
+          w={['100%', 'auto']}
+          mt={['24px', '0px']}
+        >
           <Button
             isLoading={
               isLoading ||

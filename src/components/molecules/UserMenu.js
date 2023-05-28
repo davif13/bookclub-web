@@ -1,5 +1,6 @@
 import { Avatar, Menu, MenuButton, MenuList, Flex } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Text, MenuItem } from 'components/atoms'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { BsBookmarkHeart } from 'react-icons/bs'
@@ -12,43 +13,50 @@ import {
 
 export const UserMenu = () => {
   const userStore = useSelector((state) => state.user)
+  const navigate = useNavigate()
 
   const menuOptions = [
     {
       id: 0,
       icon: BsBookmarkHeart,
       text: 'Favoritos',
-      divider: false
+      divider: false,
+      onClick: () => navigate('/favorites')
     },
     {
       id: 1,
       icon: BiUser,
       text: 'Dados Pessoais',
-      divider: false
+      divider: false,
+      onClick: () => navigate('/favorites')
     },
     {
       id: 2,
       icon: BiCheckShield,
       text: 'Alterar Senha',
-      divider: true
+      divider: true,
+      onClick: () => navigate('/favorites')
     },
     {
       id: 3,
       icon: HiOutlineDocumentText,
       text: 'Termos de Uso',
-      divider: false
+      divider: false,
+      onClick: () => navigate('/favorites')
     },
     {
       id: 4,
       icon: HiOutlineClipboard,
       text: 'Política de Privacidade',
-      divider: true
+      divider: true,
+      onClick: () => navigate('/favorites')
     },
     {
       id: 5,
       icon: HiOutlineLogout,
       text: 'Logout',
-      divider: false
+      divider: false,
+      onClick: () => navigate('/favorites')
     }
   ]
 
@@ -83,6 +91,7 @@ export const UserMenu = () => {
             icon={item.icon}
             h="48px"
             divider={item.divider}
+            onClick={() => item.onClick()}
           />
         ))}
       </MenuList>
