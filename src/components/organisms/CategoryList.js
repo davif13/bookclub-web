@@ -69,7 +69,7 @@ export const CategoryList = ({ title, categoryId }) => {
       >
         {isLoading && <Spinner />}
         {!isLoading && bookQuery && bookQuery?.data?.length === 0 && (
-          <Flex h="230px" alignItems="center" justifyContent="center">
+          <Flex alignItems="center" justifyContent="center" h="230px">
             <Text>Nenhum livro encontrado</Text>
           </Flex>
         )}
