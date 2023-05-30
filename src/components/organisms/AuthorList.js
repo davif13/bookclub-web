@@ -1,6 +1,6 @@
-import { Flex, Spinner } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { AuthorCard } from 'components/molecules'
-import { Text } from 'components/atoms'
+import { Text, Loader } from 'components/atoms'
 
 export const AuthorList = ({ data, isLoading }) => {
   return (
@@ -17,17 +17,12 @@ export const AuthorList = ({ data, isLoading }) => {
     >
       <Text.ScreenTitle>Autores</Text.ScreenTitle>
       <Flex mt={['12px', '24px']} flexDir="row">
-        {isLoading && (
+        {isLoading && <Loader />}
+        {((!isLoading && data?.length === 0) || !data) && (
           <Flex alignItems="center" justifyContent="center" h="30px">
-            <Spinner />
+            <Text>Nenhum autor encontrado</Text>
           </Flex>
         )}
-        {(!isLoading && data?.length === 0) ||
-          (!data && (
-            <Flex alignItems="center" justifyContent="center" h="30px">
-              <Text>Nenhum autor encontrado</Text>
-            </Flex>
-          ))}
         {data &&
           data?.map((item) => (
             <AuthorCard key={`author_${item.id}`} {...item} />
