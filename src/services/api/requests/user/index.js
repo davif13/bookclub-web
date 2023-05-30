@@ -1,14 +1,14 @@
 import { api } from 'services/api'
 
 export const userUpdateCall = (data) =>
-  api.get('/user', data, {
+  api.put('/user', data, {
     headers: {
       Authorization: `bearer ${localStorage.getItem('@bookclub_token')}`
     }
   })
 
 export const userAvatarCall = (data) =>
-  api.get('/user/avatar', data, {
+  api.put('/user/avatar', data, {
     headers: {
       Authorization: `bearer ${localStorage.getItem('@bookclub_token')}`
     }
