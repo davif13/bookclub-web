@@ -11,7 +11,7 @@ import {
   HiOutlineLogout
 } from 'react-icons/hi'
 
-export const UserMenu = ({ setShowModal }) => {
+export const UserMenu = ({ onLogout, setShowModal }) => {
   const userStore = useSelector((state) => state.user)
   const navigate = useNavigate()
 
@@ -42,7 +42,7 @@ export const UserMenu = ({ setShowModal }) => {
       icon: HiOutlineDocumentText,
       text: 'Termos de Uso',
       divider: false,
-      onClick: () => navigate('/favorites')
+      onClick: () => navigate('terms')
     },
     {
       id: 4,
@@ -56,7 +56,7 @@ export const UserMenu = ({ setShowModal }) => {
       icon: HiOutlineLogout,
       text: 'Logout',
       divider: false,
-      onClick: () => navigate('/favorites')
+      onClick: () => onLogout()
     }
   ]
 

@@ -11,8 +11,6 @@ export const ResetPasswordScreen = () => {
   const toast = useToast()
   const [searchParams] = useSearchParams()
 
-  console.log({ email: searchParams.get('email') })
-
   const mutation = useMutation((data) => resetPasswordCall(data), {
     onError: (error) => {
       toast({
