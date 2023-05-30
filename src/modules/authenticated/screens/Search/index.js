@@ -19,8 +19,8 @@ export const SearchScreen = () => {
       <NavBar query={query} setQuery={setQuery} />
       <Flex
         flexDir="column"
-        alignItems={['center', 'flex-start']}
-        justifyContent={['center', 'flex-start']}
+        alignItems="flex-start"
+        justifyContent="flex-start"
         w="100%"
         maxW="100vw"
         mt={['24px', '48px']}

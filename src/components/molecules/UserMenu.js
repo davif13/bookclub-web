@@ -42,7 +42,7 @@ export const UserMenu = ({ onLogout, setShowModal }) => {
       icon: HiOutlineDocumentText,
       text: 'Termos de Uso',
       divider: false,
-      onClick: () => navigate('terms')
+      onClick: () => setShowModal('terms')
     },
     {
       id: 4,
