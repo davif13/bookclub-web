@@ -97,7 +97,7 @@ export const UserModal = ({ onClose }) => {
     }
   })
 
-  const onChangeImage = (event) => {
+  const onChangeImage = async (event) => {
     const file = event?.target?.files[0]
     const type = file?.type
 
