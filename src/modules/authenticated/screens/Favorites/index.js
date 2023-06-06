@@ -23,6 +23,7 @@ export const FavoritesScreen = () => {
         alignItems={['center', 'flex-start']}
         flexWrap="wrap"
         w="100%"
+        paddingX={['24px', '48px', '80px', '112px']}
       >
         {data?.data?.map((item) => (
           <BookCard
