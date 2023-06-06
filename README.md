@@ -1,6 +1,8 @@
-# :chart_with_upwards_trend: BookClub App (Under Construction!)
+# :chart_with_upwards_trend: BookClub App
 
 BookClub is a web application that simulates a virtual bookshelf, where the user can search by book name or author, in addition to making a list of his favorite books! The application has a connection to an API, where title requests are made, just like registration, login and password forgetting features.
+
+![Live deploy BookClub App](public/img/bookclub.png)
 
 ## :wrench: Features
 
@@ -45,7 +47,7 @@ Run the project:
 
 ## :computer: Deployment (Live Link)
 
-This application is deployed on Vercel, which means you can access it online, right now! To access the deployed application, simply follow this link: (UNDER CONSTRUCTION)
+This application is deployed on Vercel, which means you can access it online, right now! To access the deployed application, simply follow this link: https://bookclub-davif13.vercel.app/
 
 Register with your e-mail and login into your account!
 
